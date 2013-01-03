@@ -1,0 +1,13 @@
+{
+  "name": "modularise",
+  "version": "0.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "async": "~0.1.22",
+    "mkdirp": "~0.3.4",
+    "detective": "~0.2.1",
+    "resolve": "~0.2.3",
+    "ncp": "~0.2.6",
+    "rimraf": "~2.1.1"
+  }
+}

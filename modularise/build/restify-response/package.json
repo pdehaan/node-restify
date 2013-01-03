@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "once": "1.1.1",
+    "mime": "1.2.7",
+    "assert-plus": "0.1.2",
+    "restify-errors": "2.0.2"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rvagg/node-restify.git"
+  },
+  "version": "2.0.2",
+  "description": "restify component ({name})",
+  "homepage": "http://mcavage.github.com/node-restify",
+  "contributors": [
+    "Dominic Barnes",
+    "Domenic Denicola",
+    "Paul Bouzakis",
+    "Shaun Berryman",
+    "Ben Howes",
+    "Steve Mason",
+    "Trent Mick",
+    "Falco Nogatz",
+    "Pedro Palazón",
+    "Andrew Robinson",
+    "Isaac Schlueter",
+    "Andrew Sliwinski",
+    "Matt Smillie",
+    "Diego Torres",
+    "Mike Williams"
+  ],
+  "author": "Mark Cavage <mcavage@gmail.com>",
+  "name": "restify-response",
+  "main": "./response.js"
+}
