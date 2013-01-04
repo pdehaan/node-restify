@@ -1,3 +1,13 @@
+// fix up ../errors to ./errors
+var pluginErrorReplacement = function (plugin) {
+      return {
+          file    : require.resolve('../lib/plugins/' + plugin)
+        , regexp  : /\.\.\/errors/
+        , replace : './errors'
+      }
+    }
+
+
 module.exports = [
     {
         name         : 'errors'
@@ -14,10 +24,7 @@ module.exports = [
           , require.resolve('../lib/http_date')
         ]
       , rewrite      : {
-            'errors/index.js': {
-                from: 'errors'
-              , to: 'errors'
-            }
+            'errors/index.js': { from: 'errors', to: 'errors' }
         }
     }
   , {
@@ -45,5 +52,85 @@ module.exports = [
               , replace : '$1\n\t\tif (!req.params) req.params = {};\n'
             }
         ]
+    }
+  , {
+        name         : 'plugin-body-reader'
+      , input        : [
+            require.resolve('../lib/plugins/body_reader')
+        ]
+      , replacements : [
+            pluginErrorReplacement('body_reader')
+        ]
+       , rewrite      : {
+            'errors/index.js': { from: 'errors', to: 'errors' }
+        }
+    }
+  , {
+        name         : 'plugin-form-body-parser'
+      , input        : [
+            require.resolve('../lib/plugins/form_body_parser')
+        ]
+      , replacements : [
+            pluginErrorReplacement('form_body_parser')
+        ]
+       , rewrite      : {
+            'errors/index.js': { from: 'errors', to: 'errors' }
+          , 'plugins/body_reader.js': { from: 'body_reader', to: 'plugin-body-reader' }
+        }
+    }
+  , {
+        name         : 'plugin-json-body-parser'
+      , input        : [
+            require.resolve('../lib/plugins/json_body_parser')
+        ]
+      , replacements : [
+            pluginErrorReplacement('json_body_parser')
+        ]
+       , rewrite      : {
+            'errors/index.js': { from: 'errors', to: 'errors' }
+          , 'plugins/body_reader.js': { from: 'body_reader', to: 'plugin-body-reader' }
+        }
+    }
+  , {
+        name         : 'plugin-multipart-parser'
+      , input        : [
+            require.resolve('../lib/plugins/multipart_parser')
+        ]
+      , replacements : [
+            pluginErrorReplacement('multipart_parser')
+        ]
+       , rewrite      : {
+            'errors/index.js': { from: 'errors', to: 'errors' }
+        }
+    }
+  , {
+        name         : 'plugin-body-parser'
+      , input        : [
+            require.resolve('../lib/plugins/body_parser')
+        ]
+      , replacements : [
+            pluginErrorReplacement('body_parser')
+        ]
+       , rewrite      : {
+            'errors/index.js': { from: 'errors', to: 'errors' }
+          , 'plugins/body_reader.js': { from: 'body_reader', to: 'plugin-body-reader' }
+          , 'plugins/json_body_parser.js': { from: 'json_body_parser', to: 'plugin-json-body-parser' }
+          , 'plugins/form_body_parser.js': { from: 'form_body_parser', to: 'plugin-form-body-parser' }
+          , 'plugins/multipart_parser.js': { from: 'multipart_parser', to: 'plugin-multipart-parser' }
+        }
+    }
+  , {
+        name         : 'plugin-pre-pause'
+      , input        : [
+            require.resolve('../lib/plugins/pre/pause')
+        ]
+      , replacements : []
+    }
+  , {
+        name         : 'plugin-pre-path'
+      , input        : [
+            require.resolve('../lib/plugins/pre/pre_path')
+        ]
+      , replacements : []
     }
 ]

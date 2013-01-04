@@ -1,9 +1,11 @@
 {
   "dependencies": {
-    "once": "1.1.1",
-    "mime": "1.2.7",
     "assert-plus": "0.1.2",
-    "restify-errors": "2.0.2"
+    "restify-errors": "2.0.2",
+    "restify-plugin-body-reader": "2.0.2",
+    "restify-plugin-json-body-parser": "2.0.2",
+    "restify-plugin-form-body-parser": "2.0.2",
+    "restify-plugin-multipart-parser": "2.0.2"
   },
   "engines": {
     "node": ">=0.8"
@@ -13,7 +15,7 @@
     "url": "git@github.com:rvagg/node-restify.git"
   },
   "version": "2.0.2",
-  "description": "restify component (response), extracted from \"restify\"",
+  "description": "restify component (plugin-body-parser), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [
     "Dominic Barnes",
@@ -33,6 +35,6 @@
     "Mike Williams"
   ],
   "author": "Mark Cavage <mcavage@gmail.com>",
-  "name": "restify-response",
-  "main": "./response.js"
+  "name": "restify-plugin-body-parser",
+  "main": "./body_parser.js"
 }

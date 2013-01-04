@@ -10,7 +10,7 @@
     "url": "git@github.com:rvagg/node-restify.git"
   },
   "version": "2.0.2",
-  "description": "restify component ({name})",
+  "description": "restify component (plugin-gzip), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [
     "Dominic Barnes",
