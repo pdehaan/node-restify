@@ -21,7 +21,7 @@ function queryParser(options) {
 
 
         function parseQueryString(req, res, next) {
-		if (!req.params) req.params = {};
+                if (!req.params) req.params = {};
 
                 if (!req.getQuery()) {
                         req.query = {};

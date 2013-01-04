@@ -35,6 +35,8 @@ function urlEncodedBodyParser(options) {
         var override = options.overrideParams;
 
         function parseUrlEncodedBody(req, res, next) {
+                if (!req.params) req.params = {};
+
                 if (req.getContentType() !== MIME_TYPE || !req.body) {
                         next();
                         return;

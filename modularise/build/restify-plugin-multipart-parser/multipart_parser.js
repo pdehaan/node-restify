@@ -32,6 +32,8 @@ function multipartBodyParser(options) {
 
         var override = options.overrideParams;
         function parseMultipartBody(req, res, next) {
+                if (!req.params) req.params = {};
+
                 if (req.getContentType() !== 'multipart/form-data' ||
                     (req.getContentLength() === 0 && !req.isChunked()))
                         return (next());

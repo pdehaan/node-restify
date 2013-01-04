@@ -49,7 +49,7 @@ module.exports = [
             {   // query.js relies on the existence of req.params
                 file    : require.resolve('../lib/plugins/query')
               , regexp  : /(function parseQueryString.*)$/m
-              , replace : '$1\n\t\tif (!req.params) req.params = {};\n'
+              , replace : '$1\n                if (!req.params) req.params = {};\n'
             }
         ]
     }
@@ -72,6 +72,11 @@ module.exports = [
         ]
       , replacements : [
             pluginErrorReplacement('form_body_parser')
+          , {   // relies on the existence of req.params
+                file    : require.resolve('../lib/plugins/form_body_parser')
+              , regexp  : /(function parseUrlEncodedBody.*)$/m
+              , replace : '$1\n                if (!req.params) req.params = {};\n'
+            }
         ]
        , rewrite      : {
             'errors/index.js': { from: 'errors', to: 'errors' }
@@ -85,6 +90,11 @@ module.exports = [
         ]
       , replacements : [
             pluginErrorReplacement('json_body_parser')
+          , {   // relies on the existence of req.params
+                file    : require.resolve('../lib/plugins/json_body_parser')
+              , regexp  : /(function parseJson.*)$/m
+              , replace : '$1\n                if (!req.params) req.params = {};\n'
+            }
         ]
        , rewrite      : {
             'errors/index.js': { from: 'errors', to: 'errors' }
@@ -98,6 +108,11 @@ module.exports = [
         ]
       , replacements : [
             pluginErrorReplacement('multipart_parser')
+          , {   // relies on the existence of req.params
+                file    : require.resolve('../lib/plugins/multipart_parser')
+              , regexp  : /(function parseMultipartBody.*)$/m
+              , replace : '$1\n                if (!req.params) req.params = {};\n'
+            }
         ]
        , rewrite      : {
             'errors/index.js': { from: 'errors', to: 'errors' }

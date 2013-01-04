@@ -28,6 +28,8 @@ function jsonBodyParser(options) {
         var override = options.overrideParams;
 
         function parseJson(req, res, next) {
+                if (!req.params) req.params = {};
+
                 if (req.getContentType() !== 'application/json' || !req.body) {
                         next();
                         return;
