@@ -8,6 +8,7 @@ var bodyReader = require('./body_reader');
 var jsonParser = require('./json_body_parser');
 var formParser = require('./form_body_parser');
 var multipartParser = require('./multipart_parser');
+var fieldedTextParser = require('./fielded_text_body_parser.js');
 
 
 
@@ -28,12 +29,22 @@ function bodyParser(options) {
         var parseForm = formParser(options);
         var parseJson = jsonParser(options);
         var parseMultipart = multipartParser(options);
+        var parseFieldedText = fieldedTextParser(options);
 
         function parseBody(req, res, next) {
-                if (req.method === 'GET' || req.method === 'HEAD') {
+                // Allow use of 'requestBodyOnGet' flag to allow for merging of
+                // the request body of a GET request into req.params
+                if (req.method === 'HEAD') {
                         next();
                         return;
                 }
+                if (req.method === 'GET') {
+                        if (!options.requestBodyOnGet) {
+                                next();
+                                return;
+                        }
+                }
+
                 if (req.contentLength() === 0 && !req.isChunked()) {
                         next();
                         return;
@@ -51,6 +62,16 @@ function bodyParser(options) {
                 case 'multipart/form-data':
                         parser = parseMultipart;
                         break;
+                case 'text/tsv':
+                        parser = parseFieldedText;
+                        break;
+                case 'text/tab-separated-values':
+                        parser = parseFieldedText;
+                        break;
+                case 'text/csv':
+                        parser = parseFieldedText;
+                        break;
+
                 default:
                         break;
                 }

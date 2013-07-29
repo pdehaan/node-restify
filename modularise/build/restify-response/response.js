@@ -30,22 +30,34 @@ Response.prototype.cache = function cache(type, options) {
                 type = 'public';
         }
 
-        if (options && options.maxAge) {
+        if (options && options.maxAge !== undefined) {
                 assert.number(options.maxAge, 'options.maxAge');
-                type += ', max-age=' + (options.maxAge / 1000);
+                type += ', max-age=' + options.maxAge;
         }
 
         return (this.header('Cache-Control', type));
 };
 
 
+Response.prototype.charSet = function charSet(type) {
+        assert.string(type, 'charset');
+
+        this._charSet = type;
+
+        return (this);
+};
+
+
 Response.prototype.format = function format(body, cb) {
         var log = this.log;
+        var formatter;
         var type = this.contentType || this.getHeader('Content-Type');
-        var formatter = this.formatters[type];
         var self = this;
 
-        if (!formatter) {
+        if (type && type.indexOf(';') !== '-1')
+                type = type.split(';')[0];
+
+        if (!(formatter = this.formatters[type])) {
                 if (!type) {
                         for (var i = 0; i < this.acceptable.length; i++) {
                                 if (this.req.accepts(this.acceptable[i])) {
@@ -69,6 +81,11 @@ Response.prototype.format = function format(body, cb) {
                         this.statusCode = 500;
                         return (null);
                 }
+                this.setHeader('Content-Type', type);
+        }
+
+        if (this._charSet) {
+                type = type + '; charset=' + this._charSet;
                 this.setHeader('Content-Type', type);
         }
 
@@ -111,7 +128,9 @@ Response.prototype.header = function header(name, value) {
 
 
 Response.prototype.json = function json(code, object, headers) {
-        this.header('Content-Type', 'application/json');
+        if (!/application\/json/.test(this.header('content-type')))
+                this.header('Content-Type', 'application/json');
+
         return (this.send(code, object, headers));
 };
 
@@ -143,12 +162,16 @@ Response.prototype.send = function send(code, body, headers) {
         headers = headers || {};
 
         if (log.trace()) {
-                log.trace({
+                var _props = {
                         code: self.statusCode,
-                        body: body,
-                        headers: headers,
-                        res: self
-                }, 'response::send entered');
+                        headers: headers
+                };
+                if (body instanceof Error) {
+                        _props.err = body;
+                } else {
+                        _props.body = body;
+                }
+                log.trace(_props, 'response::send entered');
         }
 
         this._body = body;
@@ -158,9 +181,6 @@ Response.prototype.send = function send(code, body, headers) {
                 Object.keys(headers).forEach(function (k) {
                         self.setHeader(k, headers[k]);
                 });
-
-                if (self.getHeader('content-encoding') ===  'gzip')
-                        self.removeHeader('content-length');
 
                 self.writeHead(self.statusCode);
 
@@ -238,8 +258,6 @@ Response.prototype.writeHead = function restifyWriteHead() {
                 this.removeHeader('Content-Length');
                 this.removeHeader('Content-MD5');
                 this.removeHeader('Content-Type');
-        } else if (this._rstfy_gzip) {
-                this.setHeader('Content-Encoding', 'gzip');
         }
 
         this._writeHead.apply(this, arguments);

@@ -60,8 +60,9 @@ function jsonBodyParser(options) {
                         }
                 } else {
                         req._body = req.body;
-                        req.body = params;
                 }
+
+                req.body = params;
 
                 next();
         }
