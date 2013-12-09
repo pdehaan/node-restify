@@ -77,6 +77,11 @@ module.exports = [
               , regexp  : /(function parseUrlEncodedBody.*)$/m
               , replace : '$1\n                if (!req.params) req.params = {};\n'
             }
+          , {   // relies on the existence of req.log.trace
+                file    : require.resolve('../lib/plugins/form_body_parser')
+              , regexp  : /^                req\.log\.trace\(/m
+              , replace : '                if (req.log && req.log.trace) req.log.trace('
+            }
         ]
        , rewrite      : {
             'errors/index.js': { from: 'errors', to: 'errors' }

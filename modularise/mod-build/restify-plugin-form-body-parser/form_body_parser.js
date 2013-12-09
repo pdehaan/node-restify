@@ -63,7 +63,7 @@ function urlEncodedBodyParser(options) {
                         return;
                 }
 
-                req.log.trace('req.params now: %j', req.params);
+                if (req.log && req.log.trace) req.log.trace('req.params now: %j', req.params);
                 next();
         }
 
