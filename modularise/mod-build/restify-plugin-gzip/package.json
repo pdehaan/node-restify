@@ -3,8 +3,7 @@
     "dtrace-provider": "0.2.8"
   },
   "dependencies": {
-    "qs": "0.6.4",
-    "assert-plus": "0.1.2"
+    "assert-plus": "0.1.4"
   },
   "engines": {
     "node": ">=0.8"
@@ -14,7 +13,7 @@
     "url": "git@github.com:rvagg/node-restify.git"
   },
   "version": "2.6.1",
-  "description": "restify component (plugin-query), extracted from \"restify\"",
+  "description": "restify component (plugin-gzip), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [
     "Nathanael Anderson",
@@ -45,6 +44,6 @@
     "Mike Williams"
   ],
   "author": "Mark Cavage <mcavage@gmail.com>",
-  "name": "restify-plugin-query",
-  "main": "./query.js"
+  "name": "restify-plugin-gzip",
+  "main": "./gzip.js"
 }

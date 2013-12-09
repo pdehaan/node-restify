@@ -3,8 +3,10 @@
     "dtrace-provider": "0.2.8"
   },
   "dependencies": {
-    "verror": "1.3.6",
-    "assert-plus": "0.1.2"
+    "qs": "0.6.5",
+    "assert-plus": "0.1.4",
+    "restify-errors": "2.6.1",
+    "restify-plugin-body-reader": "2.6.1"
   },
   "engines": {
     "node": ">=0.8"
@@ -14,7 +16,7 @@
     "url": "git@github.com:rvagg/node-restify.git"
   },
   "version": "2.6.1",
-  "description": "restify component (errors), extracted from \"restify\"",
+  "description": "restify component (plugin-form-body-parser), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [
     "Nathanael Anderson",
@@ -45,6 +47,6 @@
     "Mike Williams"
   ],
   "author": "Mark Cavage <mcavage@gmail.com>",
-  "name": "restify-errors",
-  "main": "./index.js"
+  "name": "restify-plugin-form-body-parser",
+  "main": "./form_body_parser.js"
 }

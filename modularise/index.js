@@ -8,7 +8,7 @@ const async     = require('async')
     , ncp       = require('ncp').ncp
     , rimraf    = require('rimraf')
 
-const OUTPUT_DIR  = path.join(__dirname, 'build')
+const OUTPUT_DIR  = path.join(__dirname, 'mod-build')
     , DESCRIPTION = 'restify component ({name}), extracted from "restify"'  // for package.json
 
     , packages = require('./packages.js')

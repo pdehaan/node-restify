@@ -3,8 +3,9 @@
     "dtrace-provider": "0.2.8"
   },
   "dependencies": {
-    "assert-plus": "0.1.2",
-    "restify-errors": "2.6.1"
+    "assert-plus": "0.1.4",
+    "restify-errors": "2.6.1",
+    "restify-plugin-body-reader": "2.6.1"
   },
   "engines": {
     "node": ">=0.8"
@@ -14,7 +15,7 @@
     "url": "git@github.com:rvagg/node-restify.git"
   },
   "version": "2.6.1",
-  "description": "restify component (plugin-body-reader), extracted from \"restify\"",
+  "description": "restify component (plugin-json-body-parser), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [
     "Nathanael Anderson",
@@ -45,6 +46,6 @@
     "Mike Williams"
   ],
   "author": "Mark Cavage <mcavage@gmail.com>",
-  "name": "restify-plugin-body-reader",
-  "main": "./body_reader.js"
+  "name": "restify-plugin-json-body-parser",
+  "main": "./json_body_parser.js"
 }

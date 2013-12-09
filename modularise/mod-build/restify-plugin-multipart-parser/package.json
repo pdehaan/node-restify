@@ -3,7 +3,9 @@
     "dtrace-provider": "0.2.8"
   },
   "dependencies": {
-    "assert-plus": "0.1.2"
+    "formidable": "1.0.14",
+    "assert-plus": "0.1.4",
+    "restify-errors": "2.6.1"
   },
   "engines": {
     "node": ">=0.8"
@@ -13,7 +15,7 @@
     "url": "git@github.com:rvagg/node-restify.git"
   },
   "version": "2.6.1",
-  "description": "restify component (plugin-gzip), extracted from \"restify\"",
+  "description": "restify component (plugin-multipart-parser), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [
     "Nathanael Anderson",
@@ -44,6 +46,6 @@
     "Mike Williams"
   ],
   "author": "Mark Cavage <mcavage@gmail.com>",
-  "name": "restify-plugin-gzip",
-  "main": "./gzip.js"
+  "name": "restify-plugin-multipart-parser",
+  "main": "./multipart_parser.js"
 }

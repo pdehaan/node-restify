@@ -3,9 +3,8 @@
     "dtrace-provider": "0.2.8"
   },
   "dependencies": {
-    "formidable": "1.0.14",
-    "assert-plus": "0.1.2",
-    "restify-errors": "2.6.1"
+    "qs": "0.6.5",
+    "assert-plus": "0.1.4"
   },
   "engines": {
     "node": ">=0.8"
@@ -15,7 +14,7 @@
     "url": "git@github.com:rvagg/node-restify.git"
   },
   "version": "2.6.1",
-  "description": "restify component (plugin-multipart-parser), extracted from \"restify\"",
+  "description": "restify component (plugin-query), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [
     "Nathanael Anderson",
@@ -46,6 +45,6 @@
     "Mike Williams"
   ],
   "author": "Mark Cavage <mcavage@gmail.com>",
-  "name": "restify-plugin-multipart-parser",
-  "main": "./multipart_parser.js"
+  "name": "restify-plugin-query",
+  "main": "./query.js"
 }
