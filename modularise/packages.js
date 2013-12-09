@@ -119,6 +119,19 @@ module.exports = [
         }
     }
   , {
+        name         : 'plugin-fielded-text-body-parser'
+      , input        : [
+            require.resolve('../lib/plugins/fielded_text_body_parser')
+        ]
+      , replacements : [
+            pluginErrorReplacement('body_parser')
+        ]
+       , rewrite      : {
+            'errors/index.js': { from: 'errors', to: 'errors' }
+          , 'plugins/body_reader.js': { from: 'body_reader', to: 'plugin-body-reader' }
+        }
+    }
+  , {
         name         : 'plugin-body-parser'
       , input        : [
             require.resolve('../lib/plugins/body_parser')
@@ -132,6 +145,7 @@ module.exports = [
           , 'plugins/json_body_parser.js': { from: 'json_body_parser', to: 'plugin-json-body-parser' }
           , 'plugins/form_body_parser.js': { from: 'form_body_parser', to: 'plugin-form-body-parser' }
           , 'plugins/multipart_parser.js': { from: 'multipart_parser', to: 'plugin-multipart-parser' }
+          , 'plugins/fielded_text_body_parser.js': { from: 'fielded_text_body_parser', to: 'plugin-fielded-text-body-parser' }
         }
     }
   , {
