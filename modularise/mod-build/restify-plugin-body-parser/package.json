@@ -9,7 +9,7 @@
     "restify-plugin-json-body-parser": "2.6.1",
     "restify-plugin-form-body-parser": "2.6.1",
     "restify-plugin-multipart-parser": "2.6.1",
-    "restify-plugin-fielded-text-body-parser": "2.6.1"
+    "restify-plugin-fielded-text-body-parser": "2.6.1-1"
   },
   "engines": {
     "node": ">=0.8"
@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git@github.com:rvagg/node-restify.git"
   },
-  "version": "2.6.1",
+  "version": "2.6.1-1",
   "description": "restify component (plugin-body-parser), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [

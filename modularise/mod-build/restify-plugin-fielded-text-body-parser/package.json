@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git@github.com:rvagg/node-restify.git"
   },
-  "version": "2.6.1",
+  "version": "2.6.1-1",
   "description": "restify component (plugin-fielded-text-body-parser), extracted from \"restify\"",
   "homepage": "http://mcavage.github.com/node-restify",
   "contributors": [

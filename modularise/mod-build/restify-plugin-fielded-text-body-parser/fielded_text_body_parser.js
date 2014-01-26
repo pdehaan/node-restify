@@ -5,7 +5,7 @@
 var csv    = require('csv');
 var assert = require('assert-plus');
 var bodyReader = require('./body_reader');
-var errors = require('../errors');
+var errors = require('./errors');
 
 ///--- API
 

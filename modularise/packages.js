@@ -129,7 +129,7 @@ module.exports = [
             require.resolve('../lib/plugins/fielded_text_body_parser')
         ]
       , replacements : [
-            pluginErrorReplacement('body_parser')
+            pluginErrorReplacement('fielded_text_body_parser')
         ]
        , rewrite      : {
             'errors/index.js': { from: 'errors', to: 'errors' }
